@@ -1,5 +1,7 @@
 package Yatskova;
 
+import Yatskova.Pixel_lines.DDALineDrawer;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -18,17 +20,18 @@ public class DrawPanel extends JPanel implements MouseMotionListener {
     public void paint(Graphics g) {
         BufferedImage bufferedImage = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
         Graphics gr = bufferedImage.getGraphics();
-        gr.setColor(Color.BLUE);
+        gr.setColor(Color.WHITE);
         gr.fillRect(0, 0, 800, 600);
-        gr.setColor(Color.CYAN);
-        LineDrawer ld = new GraphicsLineDrawer(gr);
+        gr.setColor(Color.BLACK);
+        PixelDrawer pd = new GraphicsPixelDrawer(gr);
+        LineDrawer ld = new DDALineDrawer(pd);
         drawAll(ld);
         g.drawImage(bufferedImage, 0, 0, null);
         gr.dispose();
     }
 
     public void drawAll(LineDrawer ld) {
-        drawSnowFlake(ld, 200, 300, 150, 8);
+        drawSnowFlake(ld, 200, 300, 150, 28);
         ld.drawLine(getWidth() / 2, getHeight() / 2, (int) position.getX(), (int) position.getY());
     }
 
