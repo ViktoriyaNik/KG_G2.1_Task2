@@ -37,7 +37,7 @@ public class DrawPanel extends JPanel implements MouseMotionListener {
     public void drawAll(LineDrawer ld, LineDrawer bld, LineDrawer wyld) {
         drawSnowFlake(ld, 200, 300, 100, 28);
         drawSnowFlake2(bld, 350,200, 100, 28);
-        drawSnowFlake2(wyld, 600,300, 100, 28);
+        drawSnowFlake3(wyld, 600,300, 100, 28);
         ld.drawLine(getWidth() / 2, getHeight() / 2, (int) position.getX(), (int) position.getY());
     }
 
@@ -58,6 +58,16 @@ public class DrawPanel extends JPanel implements MouseMotionListener {
             double dx = r * Math.cos(a);
             double dy = r * Math.sin(a);
             bld.drawLine(x, y, x + (int) dx, y + (int) dy);
+        }
+    }
+
+    public void drawSnowFlake3(LineDrawer wyld, int x, int y, int r, int n){
+        double da = 2 * Math.PI / n;
+        for (int i = 0; i < n; i++) {
+            double a = da * i;
+            double dx = r * Math.cos(a);
+            double dy = r * Math.sin(a);
+            wyld.drawLine(x, y, x + (int) dx, y + (int) dy);
         }
     }
 
