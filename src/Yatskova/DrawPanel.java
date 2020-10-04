@@ -1,6 +1,8 @@
 package Yatskova;
 
+import Yatskova.Pixel_lines.BresenhamLineDrawer;
 import Yatskova.Pixel_lines.DDALineDrawer;
+import Yatskova.Pixel_lines.WyLineDrawer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,13 +27,17 @@ public class DrawPanel extends JPanel implements MouseMotionListener {
         gr.setColor(Color.BLACK);
         PixelDrawer pd = new GraphicsPixelDrawer(gr);
         LineDrawer ld = new DDALineDrawer(pd);
-        drawAll(ld);
+        LineDrawer bld = new BresenhamLineDrawer(pd);
+        LineDrawer wyld = new WyLineDrawer(pd);
+        drawAll(ld, bld, wyld);
         g.drawImage(bufferedImage, 0, 0, null);
         gr.dispose();
     }
 
-    public void drawAll(LineDrawer ld) {
-        drawSnowFlake(ld, 200, 300, 150, 28);
+    public void drawAll(LineDrawer ld, LineDrawer bld, LineDrawer wyld) {
+        drawSnowFlake(ld, 200, 300, 100, 28);
+        drawSnowFlake2(bld, 350,200, 100, 28);
+        drawSnowFlake2(wyld, 600,300, 100, 28);
         ld.drawLine(getWidth() / 2, getHeight() / 2, (int) position.getX(), (int) position.getY());
     }
 
@@ -42,6 +48,16 @@ public class DrawPanel extends JPanel implements MouseMotionListener {
             double dx = r * Math.cos(a);
             double dy = r * Math.sin(a);
             ld.drawLine(x, y, x + (int) dx, y + (int) dy);
+        }
+    }
+
+    public void drawSnowFlake2(LineDrawer bld, int x, int y, int r, int n) {
+        double da = 2 * Math.PI / n;
+        for (int i = 0; i < n; i++) {
+            double a = da * i;
+            double dx = r * Math.cos(a);
+            double dy = r * Math.sin(a);
+            bld.drawLine(x, y, x + (int) dx, y + (int) dy);
         }
     }
 
