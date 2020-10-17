@@ -13,7 +13,7 @@ public class DDALineDrawer implements LineDrawer {
     }
 
     @Override
-    public void drawLine(int x1, int y1, int x2, int y2) {
+    public void drawLine(int x1, int y1, int x2, int y2, Color color) {
 
         double dx = x2 - x1;
         double dy = y2 - y1;
@@ -29,7 +29,7 @@ public class DDALineDrawer implements LineDrawer {
             double k = dy / dx;
             for (int j = x1; j < x2; j++) {
                 double i = k * (j - x1) + y1;
-                pd.drawPixel(j, (int) i, Color.red);
+                pd.drawPixel(j, (int) i, color);
             }
         } else {
             if (y1 > y2) {
@@ -43,7 +43,7 @@ public class DDALineDrawer implements LineDrawer {
             double kobr = dx / dy;
             for (int i = y1; i < y2; i++) {
                 double j = kobr * (i - y1) + x1;
-                pd.drawPixel((int) j, i, Color.blue);
+                pd.drawPixel((int) j, i, color);
             }
         }
     }

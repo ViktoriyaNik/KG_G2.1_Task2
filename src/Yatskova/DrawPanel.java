@@ -38,7 +38,7 @@ public class DrawPanel extends JPanel implements MouseMotionListener {
         drawSnowFlake(ld, 200, 300, 100, 28);
         drawSnowFlake2(bld, 350,200, 100, 28);
         drawSnowFlake3(wyld, 600,300, 100, 28);
-        ld.drawLine(getWidth() / 2, getHeight() / 2, (int) position.getX(), (int) position.getY());
+        ld.drawLine(getWidth() / 2, getHeight() / 2, (int) position.getX(), (int) position.getY(), Color.YELLOW);
     }
 
     public void drawSnowFlake(LineDrawer ld, int x, int y, int r, int n) {
@@ -47,7 +47,7 @@ public class DrawPanel extends JPanel implements MouseMotionListener {
             double a = da * i;
             double dx = r * Math.cos(a);
             double dy = r * Math.sin(a);
-            ld.drawLine(x, y, x + (int) dx, y + (int) dy);
+            ld.drawLine(x, y, x + (int) dx, y + (int) dy, Color.GREEN);
         }
     }
 
@@ -57,7 +57,7 @@ public class DrawPanel extends JPanel implements MouseMotionListener {
             double a = da * i;
             double dx = r * Math.cos(a);
             double dy = r * Math.sin(a);
-            bld.drawLine(x, y, x + (int) dx, y + (int) dy);
+            bld.drawLine(x, y, x + (int) dx, y + (int) dy, Color.BLUE);
         }
     }
 
@@ -67,7 +67,7 @@ public class DrawPanel extends JPanel implements MouseMotionListener {
             double a = da * i;
             double dx = r * Math.cos(a);
             double dy = r * Math.sin(a);
-            wyld.drawLine(x, y, x + (int) dx, y + (int) dy);
+            wyld.drawLine(x, y, x + (int) dx, y + (int) dy, Color.RED);
         }
     }
 

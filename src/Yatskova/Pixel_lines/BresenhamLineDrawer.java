@@ -13,7 +13,7 @@ public class BresenhamLineDrawer implements LineDrawer {
     }
 
     @Override
-    public void drawLine(int x1, int y1, int x2, int y2) {
+    public void drawLine(int x1, int y1, int x2, int y2, Color color) {
         int dx = x2 - x1;
         int dy = y2 - y1;
         if (Math.abs(dx) > Math.abs(dy)) {
@@ -22,7 +22,7 @@ public class BresenhamLineDrawer implements LineDrawer {
             if (x <= x2) {
                 if (y <= y2) {
                     while (x <= x2 && y <= y2) {
-                        pd.drawPixel(x, y, Color.BLACK);
+                        pd.drawPixel(x, y, color);
                         if ((x + 1 - x1) * dy - (y + 0.5 - y1) * dx >= 0) {
                             y += 1;
                         }
@@ -30,7 +30,7 @@ public class BresenhamLineDrawer implements LineDrawer {
                     }
                 } else {
                     while (x <= x2 && y >= y2) {
-                        pd.drawPixel(x, y, Color.BLACK);
+                        pd.drawPixel(x, y, color);
                         if ((x + 1 - x1) * dy - (y - 0.5 - y1) * dx <= 0) {
                             y -= 1;
                         }
@@ -40,7 +40,7 @@ public class BresenhamLineDrawer implements LineDrawer {
             } else {
                 if (y <= y2) {
                     while (x >= x2 && y <= y2) {
-                        pd.drawPixel(x, y, Color.BLACK);
+                        pd.drawPixel(x, y, color);
                         if ((x + 1 - x1) * dy - (y + 0.5 - y1) * dx <= 0) {
                             y += 1;
                         }
@@ -48,7 +48,7 @@ public class BresenhamLineDrawer implements LineDrawer {
                     }
                 } else {
                     while (x >= x2 && y >= y2) {
-                        pd.drawPixel(x, y, Color.BLACK);
+                        pd.drawPixel(x, y, color);
                         if ((x + 1 - x1) * dy - (y - 0.5 - y1) * dx >= 0) {
                             y -= 1;
                         }
@@ -62,7 +62,7 @@ public class BresenhamLineDrawer implements LineDrawer {
             if (x <= x2) {
                 if (y <= y2) {
                     while (x <= x2 && y <= y2) {
-                        pd.drawPixel(x, y, Color.GREEN);
+                        pd.drawPixel(x, y,color);
                         if ((x + 0.5 - x1) * dy - (y + 1 - y1) * dx <= 0) {
                             x += 1;
                         }
@@ -70,7 +70,7 @@ public class BresenhamLineDrawer implements LineDrawer {
                     }
                 } else {
                     while (x <= x2 && y >= y2) {
-                        pd.drawPixel(x, y, Color.GREEN);
+                        pd.drawPixel(x, y, color);
                         if ((x + 0.5 - x1) * dy - (y + 1 - y1) * dx >= 0) {
                             x += 1;
                         }
@@ -80,7 +80,7 @@ public class BresenhamLineDrawer implements LineDrawer {
             } else {
                 if (y <= y2) {
                     while (x >= x2 && y <= y2) {
-                        pd.drawPixel(x, y, Color.GREEN);
+                        pd.drawPixel(x, y, color);
                         if ((x + 0.5 - x1) * dy - (y + 1 - y1) * dx >= 0) {
                             x -= 1;
                         }
@@ -88,7 +88,7 @@ public class BresenhamLineDrawer implements LineDrawer {
                     }
                 } else {
                     while (x >= x2 && y >= y2) {
-                        pd.drawPixel(x, y, Color.GREEN);
+                        pd.drawPixel(x, y, color);
                         if ((x + 0.5 - x1) * dy - (y + 1 - y1) * dx <= 0) {
                             x -= 1;
                         }

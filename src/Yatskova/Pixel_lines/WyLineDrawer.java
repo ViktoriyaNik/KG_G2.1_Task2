@@ -13,14 +13,17 @@ public class WyLineDrawer implements LineDrawer {
     }
 
     @Override
-    public void drawLine(int x1, int y1, int x2, int y2) {
+    public void drawLine(int x1, int y1, int x2, int y2, Color color) {
         int dx = x2 - x1;
         int dy = y2 - y1;
         double dpx, dpy;
         double k = (double) dy / (double) dx;
         double c = y1 - k * x1;
         if (Math.abs(dx) > Math.abs(dy)) {
-            Color color = new Color(225, 220, 10);
+            int r = color.getRed();
+            int g = color.getGreen();
+            int b = color.getBlue();
+            //Color color = new Color(225, 220, 10);
             pd.drawPixel(x1, y1, color);
             int x = x1;
             int y = y1;
@@ -30,12 +33,12 @@ public class WyLineDrawer implements LineDrawer {
                         dpx = Math.abs(y - (k * (x + 1) + c));
                         dpy = Math.abs(1 - dpx);
                         if (dpx < 1) {
-                            pd.drawPixel(x + 1, y, new Color((int) (color.getRed() * dpx), (int) (color.getGreen() * dpx), (int) (color.getBlue() * dpx)));
+                            pd.drawPixel(x + 1, y, new Color(r, g, b, (int) (255 * dpx)));
                         } else {
                             pd.drawPixel(x, y, color);
                         }
                         if (dpy < 1) {
-                            pd.drawPixel(x + 1, y + 1, new Color((int) (color.getRed() * dpy), (int) (color.getGreen() * dpy), (int) (color.getBlue() * dpy)));
+                            pd.drawPixel(x + 1, y + 1, new Color(r, g, b, (int) (255 * dpy)));
                         } else {
                             pd.drawPixel(x, y, color);
                         }
@@ -49,12 +52,12 @@ public class WyLineDrawer implements LineDrawer {
                         dpx = Math.abs(y - (k * (x + 1) + c));
                         dpy = Math.abs(1 - dpx);
                         if (dpx < 1) {
-                            pd.drawPixel(x + 1, y, new Color((int) (color.getRed() * dpx), (int) (color.getGreen() * dpx), (int) (color.getBlue() * dpx)));
+                            pd.drawPixel(x + 1, y, new Color(r, g, b, (int) (255 * dpx)));
                         } else {
                             pd.drawPixel(x, y, color);
                         }
                         if (dpy < 1) {
-                            pd.drawPixel(x + 1, y - 1, new Color((int) (color.getRed() * dpy), (int) (color.getGreen() * dpy), (int) (color.getBlue() * dpy)));
+                            pd.drawPixel(x + 1, y - 1, new Color(r, g, b, (int) (255 * dpy)));
                         } else {
                             pd.drawPixel(x, y, color);
                         }
@@ -70,12 +73,12 @@ public class WyLineDrawer implements LineDrawer {
                         dpx = Math.abs(y - (k * (x + 1) + c));
                         dpy = Math.abs(1 - dpx);
                         if (dpx < 1) {
-                            pd.drawPixel(x - 1, y, new Color((int) (color.getRed() * dpx), (int) (color.getGreen() * dpx), (int) (color.getBlue() * dpx)));
+                            pd.drawPixel(x - 1, y, new Color(r, g, b, (int) (255 * dpx)));
                         } else {
                             pd.drawPixel(x, y, color);
                         }
                         if (dpy < 1) {
-                            pd.drawPixel(x - 1, y + 1, new Color((int) (color.getRed() * dpy), (int) (color.getGreen() * dpy), (int) (color.getBlue() * dpy)));
+                            pd.drawPixel(x - 1, y + 1, new Color(r, g, b, (int) (255 * dpy)));
                         } else {
                             pd.drawPixel(x, y, color);
                         }
@@ -89,12 +92,12 @@ public class WyLineDrawer implements LineDrawer {
                         dpx = Math.abs(y - (k * (x + 1) + c));
                         dpy = Math.abs(1 - dpx);
                         if (dpx < 1) {
-                            pd.drawPixel(x - 1, y, new Color((int) (color.getRed() * dpx), (int) (color.getGreen() * dpx), (int) (color.getBlue() * dpx)));
+                            pd.drawPixel(x - 1, y, new Color(r, g, b, (int) (255 * dpx)));
                         } else {
                             pd.drawPixel(x, y, color);
                         }
                         if (dpy < 1) {
-                            pd.drawPixel(x - 1, y - 1, new Color((int) (color.getRed() * dpy), (int) (color.getGreen() * dpy), (int) (color.getBlue() * dpy)));
+                            pd.drawPixel(x - 1, y - 1, new Color(r, g, b, (int) (255 * dpy)));
                         } else {
                             pd.drawPixel(x, y, color);
                         }
@@ -106,7 +109,10 @@ public class WyLineDrawer implements LineDrawer {
                 }
             }
         } else {
-            Color color = new Color(10, 220, 225);
+            int r = color.getRed();
+            int g = color.getGreen();
+            int b = color.getBlue();
+            //Color color = new Color(10, 220, 225);
             pd.drawPixel(x1, y1, color);
             int x = x1;
             int y = y1;
@@ -116,12 +122,12 @@ public class WyLineDrawer implements LineDrawer {
                         dpy = Math.abs(x - (y - c) / k);
                         dpx = Math.abs(1 - dpy);
                         if (dpy < 1) {
-                            pd.drawPixel(x, y + 1, new Color((int) (color.getRed() * dpy), (int) (color.getGreen() * dpy), (int) (color.getBlue() * dpy)));
+                            pd.drawPixel(x, y + 1, new Color(r, g, b, (int) (255 * dpy)));
                         } else {
                             pd.drawPixel(x, y, color);
                         }
                         if (dpx < 1) {
-                            pd.drawPixel(x + 1, y + 1, new Color((int) (color.getRed() * dpx), (int) (color.getGreen() * dpx), (int) (color.getBlue() * dpx)));
+                            pd.drawPixel(x + 1, y + 1, new Color(r, g, b, (int) (255 * dpx)));
                         } else {
                             pd.drawPixel(x, y, color);
                         }
@@ -135,12 +141,12 @@ public class WyLineDrawer implements LineDrawer {
                         dpy = Math.abs(x + 0.5 - (y - c) / k);
                         dpx = Math.abs(1 - dpy);
                         if (dpy < 1) {
-                            pd.drawPixel(x, y - 1, new Color((int) (color.getRed() * dpy), (int) (color.getGreen() * dpy), (int) (color.getBlue() * dpy)));
+                            pd.drawPixel(x, y + 1, new Color(r, g, b, (int) (255 * dpy)));
                         } else {
                             pd.drawPixel(x, y, color);
                         }
                         if (dpx < 1) {
-                            pd.drawPixel(x + 1, y - 1, new Color((int) (color.getRed() * dpx), (int) (color.getGreen() * dpx), (int) (color.getBlue() * dpx)));
+                            pd.drawPixel(x + 1, y - 1, new Color(r, g, b, (int) (255 * dpx)));
                         } else {
                             pd.drawPixel(x, y, color);
                         }
@@ -156,12 +162,12 @@ public class WyLineDrawer implements LineDrawer {
                         dpy = Math.abs(x - (y - c) / k);
                         dpx = Math.abs(1 - dpy);
                         if (dpy < 1) {
-                            pd.drawPixel(x, y + 1, new Color((int) (color.getRed() * dpy), (int) (color.getGreen() * dpy), (int) (color.getBlue() * dpy)));
+                            pd.drawPixel(x, y + 1, new Color(r, g, b, (int) (255 * dpy)));
                         } else {
                             pd.drawPixel(x, y, color);
                         }
                         if (dpx < 1) {
-                            pd.drawPixel(x - 1, y + 1, new Color((int) (color.getRed() * dpx), (int) (color.getGreen() * dpx), (int) (color.getBlue() * dpx)));
+                            pd.drawPixel(x - 1, y + 1, new Color(r, g, b, (int) (255 * dpx)));
                         } else {
                             pd.drawPixel(x, y, color);
                         }
@@ -175,12 +181,12 @@ public class WyLineDrawer implements LineDrawer {
                         dpy = Math.abs(x - (y - c) / k);
                         dpx = Math.abs(1 - dpy);
                         if (dpy < 1) {
-                            pd.drawPixel(x, y - 1, new Color((int) (color.getRed() * dpy), (int) (color.getGreen() * dpy), (int) (color.getBlue() * dpy)));
+                            pd.drawPixel(x, y - 1, new Color(r, g, b, (int) (255 * dpy)));
                         } else {
                             pd.drawPixel(x, y, color);
                         }
                         if (dpx < 1) {
-                            pd.drawPixel(x - 1, y - 1, new Color((int) (color.getRed() * dpx), (int) (color.getGreen() * dpx), (int) (color.getBlue() * dpx)));
+                            pd.drawPixel(x - 1, y - 1, new Color(r, g, b, (int) (255 * dpx)));
                         } else {
                             pd.drawPixel(x, y, color);
                         }
